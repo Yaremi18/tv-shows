@@ -1,10 +1,15 @@
 import React from 'react';
-import Text from './components/atoms/Text';
+import { BrowserRouter as Router } from "react-router-dom";
+import Routes from './Routes';
+import SideMenu from './components/molecules/SideMenu';
 
 function App() {
   return (
-    <Text type="header-1">Yaremi</Text>
+    <Router>
+      <SideMenu />
+      <Routes />
+    </Router>
   );
-}
+};
 
 export default App;
