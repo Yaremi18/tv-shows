@@ -1,9 +1,11 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components/macro';
+import theme from '../../../provider/themeProvider';
 
 const Divider = styled.div`
-    background: gray;
-    height: 1px;
-    margin: 20px 0px 20px 0px;
-`
+    height: 0.5px;
+    min-height: 0.5px;
+    margin: 10px 0px 10px 0px;
+    background: ${({ color }) => theme.colors[color || 'aqua']};
+`;
 
-export default Divider
+export default Divider;

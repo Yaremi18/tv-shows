@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import * as Icons from '@material-ui/icons';
+import theme from '../../../provider/themeProvider';
 
 const Icon = ({ color, name }) => {
     const IconSelected = useMemo(() => Icons[name], [name])
     return (
-        <IconSelected style={{ color }} />
+        <IconSelected style={{ color: theme.colors[color] }} />
     )
 }
 

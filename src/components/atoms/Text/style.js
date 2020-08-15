@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro';
-import device from '../../../utils/sizesDevices'
+import device from '../../../utils/sizesDevices';
+import theme from '../../../provider/themeProvider';
 
 const sizes = {
     'header-1': {
@@ -21,7 +22,7 @@ const sizes = {
 }
 
 export const Span = styled.span`
-    color: ${({ color }) => color};
+    color: ${({ color }) => theme.colors[color]};
     
 
     @media ${device.laptop} { 
