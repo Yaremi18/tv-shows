@@ -20,16 +20,21 @@ export const SideMenuWrapper = styled.div`
     background: ${theme.colors.secondary};
 
     @media ${device.mobileS} {
-        width: ${({ isFixed }) => (isFixed ? width.colapsed.size1 : '50px'  )};
+        width: ${width.colapsed.size1};
     }
 
     @media ${device.mobileL} {
-        width: ${({ isFixed }) => (isFixed ? width.colapsed.size2 : '50px'  )};
+        width: ${width.colapsed.size2};
     }
 
     @media ${device.tablet} {
-        width: ${({ isFixed }) => (isFixed ? width.colapsed.size3 : '50px'  )};
+        width: ${width.colapsed.size3};
     }
+    z-index: 999;
+    transition: transform 0.4s ease-out;
+    ${({ isOpen }) => isOpen 
+    ? ` transform: translateX(0);`
+    : ` transform: translateX(-100%);`}
 `;
 
 export const shareCss = css`
@@ -41,7 +46,6 @@ export const shareCss = css`
 export const HeaderWrapper = styled.div`
     display: flex;
     align-items: flex-end;
-    // justify-content: center;
     height: 20%;
     padding-left: 20px;
 `

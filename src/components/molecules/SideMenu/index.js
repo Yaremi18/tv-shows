@@ -26,22 +26,12 @@ const menuOptions = [{
     icon: 'LiveTv',
 }];
 
-const SideMenu = () => {
+const SideMenu = ({ isOpen }) => {
 
     const { width: screenWidth } = useScreenSize()
 
-    console.log(sizes.mobileL, screenWidth)
-
-    const canFixed = screenWidth > sizes.tablet
-
-    console.log(canFixed)
-
-    
-    const [isOpen, setIsOpen] = useState(true);
-    const [isFixed, setIsFixed] = useState(true);
-
-    return isOpen && (
-        <SideMenuWrapper isFixed={isFixed}>
+    return (
+        <SideMenuWrapper isOpen={isOpen}>
             <HeaderWrapper>
                 <Text type="header-1" color="primary">TV Shows</Text>
             </HeaderWrapper>
