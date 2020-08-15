@@ -4,7 +4,7 @@ import { SideMenuWrapper } from './style';
 
 const SideMenu = () => {
     const [isOpen, setIsOpen] = useState(true);
-    const [isFixed, setIsFixed] = useState(false);
+    const [isFixed, setIsFixed] = useState(true);
 
     return isOpen && (
         <SideMenuWrapper isFixed={isFixed}>

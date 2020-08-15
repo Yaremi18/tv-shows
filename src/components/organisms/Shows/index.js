@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Text from '../../atoms/Text'
 import Divider from '../../atoms/Divider'
 import { ShowsWrapper } from './style'
+import Card from '../../molecules/Card'
 
 const headers = {
     popular: 'Popular shows',
@@ -10,13 +11,15 @@ const headers = {
     airingNow: 'Airing now shows'
 }
 
-const Shows = ({ category }) => {
+const Shows = ({ category, scoreShow }) => {
     return (
         <ShowsWrapper>
             <Text type="header-1" color="black">{headers[category]}</Text>
             <Divider />
 
             {/* Content */}
+
+            <Card scoreShow={scoreShow} nameShow="hola" />
         </ShowsWrapper>
     )
 }
