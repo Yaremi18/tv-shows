@@ -10,26 +10,25 @@ import {
 } from './style';
 
 const Card = ({
-    width,
-    scoreShow,
-    imageShow,
-    nameShow,
-    // history,
+    show,
 }) => {
     const history = useHistory()
 
-    const goShowDetail = useCallback(() => {
-        history.push('/show/1')
-    }, [history])
+    const goShowDetail = useCallback((showId) => () => {
+        history.push({
+            pathname:`/show/${showId}`,
+            state: show,
+        })
+    }, [history, show])
     
     return (
-        <CardWrapper width={width} onClick={goShowDetail}>
+        <CardWrapper onClick={goShowDetail(show.id)}>
             <ImageWrapper>
-                <Image src={imageShow} />
+                <Image src={show.image} />
             </ImageWrapper>
             <FooterWrapper>
-                <Text>{nameShow}</Text>
-            <Score value={scoreShow} />
+                <Text>{show.name}</Text>
+            <Score value={show.score} />
             </FooterWrapper>
         </CardWrapper>
     )
