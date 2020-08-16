@@ -41,7 +41,7 @@ const SideMenu = ({ isOpen, onSideMenuToggle }) => {
             <Divider />
             <BodyWrapper>
                 {menuOptions.map((option) => (
-                    <ItemWrapper>
+                    <ItemWrapper key={option.name}>
                         <OptionWrapper to={option.path} onClick={onSideMenuToggle}>
                             <Icon color="primary" name={option.icon} />
                             <Text type="paragraph" color="primary">{option.name}</Text>
