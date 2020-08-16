@@ -10,12 +10,12 @@ const Score = ({ value }) => {
             {Array(5).fill().map((_, index) => {
                 const position = index + 1;
                 if (position <= firstPart) {
-                    return <Icon key={index} color="red" name="Star" />;
+                    return <Icon key={index} color="lightPrimary" name="Star" />;
                 }
                 if (isDecimal && (firstPart + 1) === position) {
-                    return <Icon key={index} color="red" name="StarHalf" />;
+                    return <Icon key={index} color="lightPrimary" name="StarHalf" />;
                 }
-                return  <Icon key={index} color="red" name="StarBorder" />;
+                return  <Icon key={index} color="lightPrimary" name="StarBorder" />;
             })}
         </div>
     );

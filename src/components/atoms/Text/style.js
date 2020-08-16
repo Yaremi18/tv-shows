@@ -8,22 +8,22 @@ const sizes = {
         web: '30px',
     },
     'header-2': {
-        mobile: '15px',
-        web: '20px',
+        mobile: '18px',
+        web: '23px',
     },
     paragraph: {
-        mobile: '10px',
-        web: '12px',
+        mobile: '12px',
+        web: '14px',
     },
     label: {
-        mobile: '9px',
-        web: '11px',
+        mobile: '11px',
+        web: '13px',
     }
 }
 
 export const Span = styled.span`
+    text-align: justify;
     color: ${({ color }) => theme.colors[color]};
-    
 
     @media ${device.laptop} { 
         font-size: ${({ type }) => sizes[type].web};

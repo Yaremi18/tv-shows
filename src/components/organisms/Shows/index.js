@@ -27,7 +27,7 @@ const searchOptions = [{
 
 const Shows = ({ category, scoreShow = 3.5 }) => {
     return (
-        <Page>
+        <Page title={headers[category]}>
             <ContentWrapper>
                 <SearchWrapper>
                     <Select options={searchOptions} label="Order by" />

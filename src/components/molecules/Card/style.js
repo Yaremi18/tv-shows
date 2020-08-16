@@ -1,7 +1,12 @@
 import styled from 'styled-components/macro'
 import themeProvider from '../../../provider/themeProvider'
 
-export const CardWrapper = styled.div`
+export const CardWrapper = styled.button`
+    outline: none;
+    padding: 0;
+    margin: 0;
+    background: white;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,6 +16,10 @@ export const CardWrapper = styled.div`
 
     height: 300px;
     min-width: 120px;
+
+    &:hover {
+        cursor: pointer;
+    }
 `;
 
 export const FooterWrapper = styled.div`

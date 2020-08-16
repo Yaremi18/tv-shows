@@ -7,7 +7,7 @@ const Page = ({ title, children }) => {
     return (
         <PageWrapper>
             <HeaderWrapper>
-                <Text type="header-1" color="black">Show detail</Text>
+                <Text type="header-1" color="black">{title}</Text>
             </HeaderWrapper>
             {children}
         </PageWrapper>

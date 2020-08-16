@@ -4,26 +4,37 @@ import Image from '../../atoms/Image';
 import Score from '../../atoms/Score';
 import Chip from '../../molecules/Chip';
 import Page from '../../atoms/Page';
+import {
+    ShowDetailWrapper,
+    DetailWrapper,
+    ChipsWrapper,
+} from './style';
 
 const ShowDetail = ({
-    name,
+    name="Yaremi",
     image,
-    overview,
-    score,
+    overview="This is a show",
+    score=3.5,
     genre="comedy",
     duration="9.3min",
 }) => {
     return (
-        <Page>
-            <Text type="header-1">{name}</Text>
-            <Image src={image} />
-            <Score value={score} />
-            
-            <Text type="header-2">Overview</Text>
-            <Text type="paragraph">{overview}</Text>
+        <Page title="Show detail">
+            <ShowDetailWrapper>
+                <Text type="header-2">{name}</Text>
+                <Image src={image} />
+                <Score value={score} />
+                
+                <DetailWrapper>
+                    <Text type="header-2">Overview</Text>
+                    <Text type="paragraph">{overview}</Text>
 
-            <Chip icon="Movie" color="secondary" label={genre} />
-            <Chip icon="Schedule" color="secondary" label={duration} />
+                    <ChipsWrapper>
+                        <Chip icon="Movie" color="secondary" label={genre} />
+                        <Chip icon="Schedule" color="secondary" label={duration} />
+                    </ChipsWrapper>
+                </DetailWrapper>
+            </ShowDetailWrapper>
         </Page>
             
     )
