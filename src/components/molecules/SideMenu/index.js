@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Text from '../../atoms/Text';
 import Icon from '../../atoms/Icon';
 import Divider from '../../atoms/Divider';
-import useScreenSize from '../../../hooks/useScreenSize';
-import { sizes } from '../../../utils/sizesDevices';
+// import useScreenSize from '../../../hooks/useScreenSize';
+// import { sizes } from '../../../utils/sizesDevices';
 import {
     SideMenuWrapper,
     HeaderWrapper,
@@ -31,7 +31,7 @@ const menuOptions = [{
 
 const SideMenu = ({ isOpen, onSideMenuToggle }) => {
 
-    const { width: screenWidth } = useScreenSize()
+    // const { width: screenWidth } = useScreenSize()
 
     return (
         <SideMenuWrapper isOpen={isOpen}>

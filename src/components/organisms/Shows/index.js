@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Text from '../../atoms/Text';
 import Card from '../../molecules/Card';
 import {
-    ShowsWrapper,
-    HeaderWrapper,
     ContentWrapper,
     CardsWrapper,
     SearchWrapper,
 } from './style';
+import Select from '../../atoms/Select';
+import Page from '../../atoms/Page';
 
 const headers = {
     popular: 'Popular shows',
@@ -16,15 +15,22 @@ const headers = {
     airingNow: 'Airing now shows'
 };
 
+const searchOptions = [{
+    id: 'ascName', name: 'Ascending name',
+},{
+    id: 'descName', name: 'Descending name',
+},{
+    id: 'ascScore', name: 'Ascending score',
+},{
+    id: 'descScore', name: 'Descending score',
+}]
+
 const Shows = ({ category, scoreShow = 3.5 }) => {
     return (
-        <ShowsWrapper>
-            <HeaderWrapper>
-                <Text type="header-1" color="black">{headers[category]}</Text>
-            </HeaderWrapper>
+        <Page>
             <ContentWrapper>
                 <SearchWrapper>
-                    <Text type="paragraph" color="black">Searcher here</Text>
+                    <Select options={searchOptions} label="Order by" />
                 </SearchWrapper>
                 <CardsWrapper>
                     <Card scoreShow={scoreShow} nameShow="hola" />
@@ -35,8 +41,7 @@ const Shows = ({ category, scoreShow = 3.5 }) => {
                     <Card scoreShow={scoreShow} nameShow="hola" />
                 </CardsWrapper>
             </ContentWrapper>
-            
-        </ShowsWrapper>
+        </Page>
     );
 };
 

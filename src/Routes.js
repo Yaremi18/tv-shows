@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import Shows from './components/organisms/Shows'
+import ShowDetail from './components/organisms/ShowDetail'
 
 const Routes = () => (
     <Switch>
@@ -14,7 +15,7 @@ const Routes = () => (
 
         {/* Path to see the show detail */}
         <Route path="/show/:showId">
-            <Shows category="airingNow" />
+            <ShowDetail />
         </Route>
 
 
