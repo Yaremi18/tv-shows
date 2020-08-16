@@ -1,13 +1,13 @@
-import React, { useState, useCallback } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-import Routes from '../../../Routes';
-import SideMenu from '../../molecules/SideMenu';
-import Icon from '../../atoms/Icon';
+import React, { useState, useCallback } from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+import Routes from '../../../Routes'
+import SideMenu from '../../molecules/SideMenu'
+import Icon from '../../atoms/Icon'
 import {
   SideMenuToggle,
   HeaderWrapper,
   Backdrop,
-} from './style';
+} from './style'
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
@@ -27,7 +27,7 @@ function App() {
       {isOpen && <Backdrop onClick={onSideMenuToggle}/>}
       <Routes />
     </Router>
-  );
-};
+  )
+}
 
-export default App;
+export default App

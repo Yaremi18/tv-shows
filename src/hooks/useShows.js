@@ -3,11 +3,15 @@ import axios from 'axios'
 import config from '../config.json'
 
 const useShows = (category, page) => {
-    const [shows, setShows] = useState([])
+    const [shows, setShows] = useState({
+        popular: [],
+        topRated: [],
+        airingNow: [],
+    })
 
     useEffect(() => {
         const loadShows = async () => {
-            setShows([])
+            console.log("Enter here")
             let result
             const baseUrl = 'https://api.themoviedb.org/3/tv/'
             switch (category) {
@@ -26,14 +30,24 @@ const useShows = (category, page) => {
 
             if (result?.status !== 200) return
 
-            setShows(result?.data?.results || [])
+            console.log(category)
+
+            setShows(prev => ({
+                ...prev,
+                [category]: [
+                    ...prev[category],
+                    ...result?.data?.results || []
+                ]
+            }))
         }
 
         loadShows()
         
     }, [page, category])
 
-    return shows
+    console.log(shows)
+
+    return shows[category]
 }
 
 export default useShows

@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { lazy, Suspense, useState } from 'react'
 import PropTypes from 'prop-types'
-import Card from '../../molecules/Card'
 import Select from '../../atoms/Select'
 import Page from '../../atoms/Page'
+import Text from '../../atoms/Text'
 import {
     ContentWrapper,
-    CardsWrapper,
     SearchWrapper,
+    LoadingWrapper,
 } from './style'
 import useShows from '../../../hooks/useShows'
 
@@ -26,12 +26,13 @@ const searchOptions = [{
     id: 'descScore', name: 'Descending score',
 }]
 
+const ShowsList = lazy(() => import('../../molecules/ShowsList'));
+
 const Shows = ({ category }) => {
     const [page, setPage] = useState(1)
-
     const shows = useShows(category, page)
 
-    // [{
+    // const shows = [{
     //     id: 1,
     //     name: "Yaremi",
     //     overview: "This is an example",
@@ -40,29 +41,22 @@ const Shows = ({ category }) => {
     //     genre_ids: [12, 28],
     //     duration: 120,
     // }]
-
+    
     return (
         <Page title={headers[category]}>
             <ContentWrapper>
                 <SearchWrapper>
                     <Select options={searchOptions} label="Order by" />
                 </SearchWrapper>
-                <CardsWrapper>
-                    {shows.map((show) => (
-                        <Card
-                            key={show.id}
-                            show={{
-                                id: show.id,
-                                name: show.name,
-                                overview: show.overview,
-                                score: show.vote_average * 5 / 10,
-                                image: `https://image.tmdb.org/t/p/w220_and_h330_face/${show.poster_path}`,
-                                genre_ids: show.genre_ids,
-                                duration: 0,
-                            }}
-                        />
-                    ))}
-                </CardsWrapper>
+                <Suspense
+                    fallback={
+                        <LoadingWrapper>
+                            <Text type="header-2">Loading shows...</Text>
+                        </LoadingWrapper>
+                    }
+                >
+                    <ShowsList shows={shows} setPage={setPage} />
+                </Suspense>
             </ContentWrapper>
         </Page>
     )

@@ -18,8 +18,10 @@ export const DetailWrapper = styled.div`
 
 export const ChipsWrapper = styled.div`
     display: flex;
+    flex-wrap: wrap;
 
     >div {
         margin-right: 5px;
+        margin-bottom: 5px;
     }
 `;
