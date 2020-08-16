@@ -10,7 +10,7 @@ export const CardWrapper = styled.div`
     border-radius: 10px;
 
     height: 300px;
-    width: 200px;
+    min-width: 120px;
 `;
 
 export const FooterWrapper = styled.div`

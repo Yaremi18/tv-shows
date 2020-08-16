@@ -16,17 +16,20 @@ import {
 const menuOptions = [{
     name: 'Popular',
     icon: 'Favorite',
+    path: '/',
 },
 {
     name: 'Top rated',
     icon: 'Star',
+    path: '/topRated',
 },
 {
     name: 'Airing now',
     icon: 'LiveTv',
+    path: '/airingNow',
 }];
 
-const SideMenu = ({ isOpen }) => {
+const SideMenu = ({ isOpen, onSideMenuToggle }) => {
 
     const { width: screenWidth } = useScreenSize()
 
@@ -39,7 +42,7 @@ const SideMenu = ({ isOpen }) => {
             <BodyWrapper>
                 {menuOptions.map((option) => (
                     <ItemWrapper>
-                        <OptionWrapper>
+                        <OptionWrapper to={option.path} onClick={onSideMenuToggle}>
                             <Icon color="primary" name={option.icon} />
                             <Text type="paragraph" color="primary">{option.name}</Text>
                         </OptionWrapper>

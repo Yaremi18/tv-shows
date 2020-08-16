@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/macro';
+import { Link } from 'react-router-dom';
 import device from '../../../utils/sizesDevices';
 import theme from '../../../provider/themeProvider';
 
@@ -13,7 +14,9 @@ const width = {
 
 export const SideMenuWrapper = styled.div`
     font-family: 'Alata', sans-serif;
-    position: absolute;
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -57,12 +60,16 @@ export const BodyWrapper = styled.div`
     height: 80%;
 `
 export const ItemWrapper = styled.div`
+    width: 100%;
     width: 85%;
     display: flex;
     flex-direction: column;
 `
 
-export const OptionWrapper = styled.div`
+export const OptionWrapper = styled(Link)`
+    cursor: pointer;
+    text-decoration: none;
+
     display: flex;
     align-items: center;
 
