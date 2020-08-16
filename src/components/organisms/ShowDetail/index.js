@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Text from '../../atoms/Text';
 import Image from '../../atoms/Image';
 import Score from '../../atoms/Score';
@@ -18,6 +18,7 @@ const ShowDetail = ({
     genre="comedy",
     duration="9.3min",
 }) => {
+
     return (
         <Page title="Show detail">
             <ShowDetailWrapper>
