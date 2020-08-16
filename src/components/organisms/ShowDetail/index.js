@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
 import Text from '../../atoms/Text'
 import Image from '../../atoms/Image'
@@ -11,12 +11,17 @@ import {
     DetailWrapper,
     ChipsWrapper,
 } from './style'
+import useExtraShowDetail from '../../../hooks/useExtraDetailShow'
 
 const ShowDetail = () => {
     const { state: show } = useLocation() // Get show data
 
     // This hook get all available genres from redux store
     const genres = useGenres()
+
+    // This hook get a extra show detail, in this case
+    // only is necessary run_time
+    const { episode_run_time: durationShow } = useExtraShowDetail(show.id) || {}
 
     // Calculate what are the show's names depending of
     // its ids
@@ -46,7 +51,7 @@ const ShowDetail = () => {
 
                     <ChipsWrapper>
                         <Chip icon="Movie" color="secondary" label={genresShow.join('/')} />
-                        <Chip icon="Schedule" color="secondary" label={show.duration} />
+                        <Chip icon="Schedule" color="secondary" label={`${durationShow?.[0] || 0} min`} />
                     </ChipsWrapper>
                 </DetailWrapper>
             </ShowDetailWrapper>

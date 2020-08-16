@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import config from '../config.json';
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import config from '../config.json'
 
 const useShows = (category, page) => {
     const [shows, setShows] = useState([])
@@ -13,26 +13,25 @@ const useShows = (category, page) => {
             switch (category) {
                 case 'popular':
                     result = await axios.get(`${baseUrl}popular?api_key=${config.apiKey}&language=en-US&page=${page}`)
-                    break;
+                    break
                 case 'topRated':
                     result = await axios.get(`${baseUrl}top_rated?api_key=${config.apiKey}&language=en-US&page=${page}`)
-                    break;
+                    break
                 case 'airingNow': 
                     result = await axios.get(`${baseUrl}airing_today?api_key=${config.apiKey}&language=en-US&page=${page}`)
-                    break;
+                    break
                 default:
-                    break;
-            };
-            
-            console.log(result)
-            if (result.status !== 200) return;
+                    break
+            }
 
-            setShows(result.data?.results || []);
+            if (result?.status !== 200) return
+
+            setShows(result?.data?.results || [])
         }
 
-        loadShows();
+        loadShows()
         
-    }, [page, category]);
+    }, [page, category])
 
     return shows
 }

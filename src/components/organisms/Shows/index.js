@@ -29,15 +29,17 @@ const searchOptions = [{
 const Shows = ({ category }) => {
     const [page, setPage] = useState(1)
 
-    const shows = [{
-        id: 1,
-        name: "Yaremi",
-        overview: "This is an example",
-        vote_average: 7.5,
-        poster_path: '/zu5HCP84rcBJJhoIQAafMXMeU2p.jpg',
-        genre_ids: [12, 28],
-        duration: 120,
-    }]//useShows(category, page)
+    const shows = useShows(category, page)
+
+    // [{
+    //     id: 1,
+    //     name: "Yaremi",
+    //     overview: "This is an example",
+    //     vote_average: 7.5,
+    //     poster_path: '/zu5HCP84rcBJJhoIQAafMXMeU2p.jpg',
+    //     genre_ids: [12, 28],
+    //     duration: 120,
+    // }]
 
     return (
         <Page title={headers[category]}>
