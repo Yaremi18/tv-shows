@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
-import Text from '../../atoms/Text';
-import Icon from '../../atoms/Icon';
-import Divider from '../../atoms/Divider';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Text from '../../atoms/Text'
+import Icon from '../../atoms/Icon'
+import Divider from '../../atoms/Divider'
 // import useScreenSize from '../../../hooks/useScreenSize';
 // import { sizes } from '../../../utils/sizesDevices';
 import {

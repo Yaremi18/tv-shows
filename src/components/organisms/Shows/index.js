@@ -32,6 +32,7 @@ const Shows = ({ category, setTitle }) => {
     const [page, setPage] = useState(1)
     const { shows, isLoading } = useShows(category, page)
 
+    // const isLoading = false
     // const shows = [{
     //     id: 1,
     //     name: "Yaremi",

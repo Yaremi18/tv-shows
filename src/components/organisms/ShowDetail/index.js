@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useCallback, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Text from '../../atoms/Text'
 import Image from '../../atoms/Image'
@@ -12,10 +12,15 @@ import {
     ShowDetailWrapper,
     DetailWrapper,
     ChipsWrapper,
+    TopWrapper,
+    FavoriteButton,
 } from './style'
+import Icon from '../../atoms/Icon'
+import { saveFavoriteShow, isFavoriteShow } from '../../../utils/favoritesShowsLS'
 
 const ShowDetail = () => {
     const { state: show } = useLocation() // Get show data
+    const [isFavorite, setIsFavorite] = useState(isFavoriteShow(show.id))
 
     // This hook get all available genres from redux store
     const allGenres = useGenres()
@@ -45,6 +50,10 @@ const ShowDetail = () => {
         }, [])
     ), [allGenres, show.genre_ids])
 
+    const handleMarkFavorite = useCallback((showId) => () => {
+        saveFavoriteShow(showId)
+        setIsFavorite(prev => !prev)
+    }, [])
 
     if (isLoading) {
         return <Loading>Loading show detail...</Loading>
@@ -54,11 +63,17 @@ const ShowDetail = () => {
         <Page>
             <ShowDetailWrapper>
                 <Text type="header-2">{show.name}</Text>
+                
                 <Image src={show.image} />
                 <Score value={show.score} />
                 
                 <DetailWrapper>
-                    <Text type="header-2">Overview</Text>
+                    <TopWrapper>
+                        <Text type="header-2">Overview</Text>
+                        <FavoriteButton onClick={handleMarkFavorite(show.id)} isFavorite={isFavorite}>
+                            <Icon color={isFavorite ? 'red' : 'lightGray'} name="Favorite" />
+                        </FavoriteButton>
+                    </TopWrapper>
                     <Text type="paragraph">{show.overview}</Text>
 
                     <Text type="header-2">{`${seasons} seasons`}</Text>

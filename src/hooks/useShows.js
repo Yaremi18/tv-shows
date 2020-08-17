@@ -56,8 +56,6 @@ const useShows = (category, page, reset) => {
         
     }, [page, category])
 
-    console.log(shows)
-
     return { shows: shows[category], isLoading }
 }
 

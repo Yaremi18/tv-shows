@@ -7,5 +7,7 @@ export default {
         aqua: '#C5E0DC',
         white: 'white',
         borders: 'gray',
+        red: '#ff9382',
+        lightGray: '#a3a3a3',
     }
 }
