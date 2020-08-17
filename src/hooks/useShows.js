@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import config from '../config.json'
 
-const useShows = (category, page) => {
+const useShows = (category, page, reset) => {
+    const [isLoading, setIsLoading] = useState(true)
     const [shows, setShows] = useState({
         popular: [],
         topRated: [],
@@ -11,7 +12,7 @@ const useShows = (category, page) => {
 
     useEffect(() => {
         const loadShows = async () => {
-            console.log("Enter here")
+            setIsLoading(true)
             let result
             const baseUrl = 'https://api.themoviedb.org/3/tv/'
             switch (category) {
@@ -28,17 +29,27 @@ const useShows = (category, page) => {
                     break
             }
 
-            if (result?.status !== 200) return
+            if (result?.status === 200) {
+                setShows(prev => {
+                    const newData = result?.data?.results || []
 
-            console.log(category)
+                    // if (reset){
+                    //     return {
+                    //         ...prev,
+                    //         [category]: newData,
+                    //     }
+                    // }
 
-            setShows(prev => ({
-                ...prev,
-                [category]: [
-                    ...prev[category],
-                    ...result?.data?.results || []
-                ]
-            }))
+                    return {
+                        ...prev,
+                        [category]: [
+                            ...prev[category],
+                            ...newData,
+                        ]
+                    }
+                })
+            }
+            setIsLoading(false)
         }
 
         loadShows()
@@ -47,7 +58,7 @@ const useShows = (category, page) => {
 
     console.log(shows)
 
-    return shows[category]
+    return { shows: shows[category], isLoading }
 }
 
 export default useShows

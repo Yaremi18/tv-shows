@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import Routes from '../../../Routes'
 import SideMenu from '../../molecules/SideMenu'
 import Icon from '../../atoms/Icon'
+import Text from '../../atoms/Text'
 import {
   SideMenuToggle,
   HeaderWrapper,
@@ -11,10 +12,11 @@ import {
 
 function App() {
   const [isOpen, setIsOpen] = useState(false)
+  const [title, setTitle] = useState('')
 
-  const onSideMenuToggle = useCallback(() => (
+  const onSideMenuToggle = useCallback(() => {
     setIsOpen(prev => !prev)
-  ), [])
+  }, [])
 
   return (
     <Router>
@@ -22,10 +24,12 @@ function App() {
         <SideMenuToggle onClick={onSideMenuToggle}>
           <Icon color="primary" name="Menu" />
         </SideMenuToggle>
+
+        <Text type="header-1">{title}</Text>
       </HeaderWrapper>
       <SideMenu isOpen={isOpen} onSideMenuToggle={onSideMenuToggle} />
-      {isOpen && <Backdrop onClick={onSideMenuToggle}/>}
-      <Routes />
+      {isOpen && <Backdrop onClick={onSideMenuToggle} />}
+      <Routes setTitle={setTitle} />
     </Router>
   )
 }

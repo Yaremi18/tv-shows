@@ -11,11 +11,3 @@ export const SearchWrapper = styled.div`
     width: 100%;
     padding-bottom: 10px;
 `
-
-export const LoadingWrapper = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    padding-top: 55px;
-`

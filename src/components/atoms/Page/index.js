@@ -1,17 +1,10 @@
-import React from 'react';
-import Text from '../../atoms/Text';
-import { PageWrapper, HeaderWrapper } from './style';
+import React from 'react'
+import { PageWrapper } from './style'
 
-const Page = ({ title, children }) => {
-
-    return (
-        <PageWrapper>
-            <HeaderWrapper>
-                <Text type="header-1" color="black">{title}</Text>
-            </HeaderWrapper>
-            {children}
-        </PageWrapper>
-    )
-}
+const Page = ({ children }) => (
+    <PageWrapper>
+        {children}
+    </PageWrapper>
+)
 
 export default Page

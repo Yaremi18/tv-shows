@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '../Card'
 import { CardsWrapper, ButtonMore } from './style'
 
-const ShowsList = ({ shows, setPage }) => {
+const ShowsList = ({ shows, setPage, isLoading }) => {
     return (
         <CardsWrapper>
             {shows.map((show) => (
@@ -20,7 +20,12 @@ const ShowsList = ({ shows, setPage }) => {
                 />
             ))}
             
-            <ButtonMore onClick={() => setPage(prev => prev + 1)}>More shows</ButtonMore>
+            <ButtonMore
+                onClick={() => setPage(prev => prev + 1)}
+                disabled={isLoading}
+            >
+                {isLoading ? 'Loading shows...' : 'More shows'}
+            </ButtonMore>
         </CardsWrapper>
     )
 }

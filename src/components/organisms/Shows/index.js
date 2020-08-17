@@ -1,14 +1,14 @@
-import React, { lazy, Suspense, useState } from 'react'
+import React, { useState, useEffect, Suspense, lazy } from 'react'
 import PropTypes from 'prop-types'
 import Select from '../../atoms/Select'
 import Page from '../../atoms/Page'
-import Text from '../../atoms/Text'
+// import ShowsList from '../../molecules/ShowsList'
+import Loading from '../../molecules/Loading'
+import useShows from '../../../hooks/useShows'
 import {
     ContentWrapper,
     SearchWrapper,
-    LoadingWrapper,
 } from './style'
-import useShows from '../../../hooks/useShows'
 
 const headers = {
     popular: 'Popular shows',
@@ -26,11 +26,11 @@ const searchOptions = [{
     id: 'descScore', name: 'Descending score',
 }]
 
-const ShowsList = lazy(() => import('../../molecules/ShowsList'));
+const ShowsList = lazy(() => import('../../molecules/ShowsList'))
 
-const Shows = ({ category }) => {
+const Shows = ({ category, setTitle }) => {
     const [page, setPage] = useState(1)
-    const shows = useShows(category, page)
+    const { shows, isLoading } = useShows(category, page)
 
     // const shows = [{
     //     id: 1,
@@ -41,21 +41,19 @@ const Shows = ({ category }) => {
     //     genre_ids: [12, 28],
     //     duration: 120,
     // }]
-    
+
+    useEffect(() => {
+        setTitle(headers[category])
+    }, [setTitle, category])
+
     return (
-        <Page title={headers[category]}>
+        <Page>
             <ContentWrapper>
                 <SearchWrapper>
                     <Select options={searchOptions} label="Order by" />
                 </SearchWrapper>
-                <Suspense
-                    fallback={
-                        <LoadingWrapper>
-                            <Text type="header-2">Loading shows...</Text>
-                        </LoadingWrapper>
-                    }
-                >
-                    <ShowsList shows={shows} setPage={setPage} />
+                <Suspense fallback={<Loading>Loading shows...</Loading>}>
+                    <ShowsList shows={shows} setPage={setPage} isLoading={isLoading} />
                 </Suspense>
             </ContentWrapper>
         </Page>

@@ -14,6 +14,8 @@ export const SideMenuToggle = styled.button`
 
 export const HeaderWrapper = styled.div`
     z-index: 200;
+    width: 100%;
+    font-family:  'Alata', sans-serif;
     position: fixed;
     height: 50px;
     top: 0;
@@ -21,6 +23,12 @@ export const HeaderWrapper = styled.div`
     display: flex;
     align-items: center;
     background: ${theme.colors.secondary};
+
+    display: flex;
+
+    > span {
+        padding-left: 20px;
+    }
 `;
 
 export const Backdrop = styled.div`
