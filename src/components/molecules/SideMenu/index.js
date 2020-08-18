@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react'
+import { useLocation } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Text from '../../atoms/Text'
 import Icon from '../../atoms/Icon'
@@ -29,7 +30,8 @@ const menuOptions = [{
 
 // This component renders the sidemenu.
 const SideMenu = ({ isOpen, onSideMenuToggle }) => {
-    const [selectedOption, setSelectedOption] = useState('/')
+    const location = useLocation()
+    const [selectedOption, setSelectedOption] = useState(location.pathname)
 
     // This callback set the selected option and hide the sidemenu when an
     // option is selected.
