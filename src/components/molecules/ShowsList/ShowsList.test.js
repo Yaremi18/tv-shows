@@ -23,7 +23,10 @@ describe('Render ShowsList', () => {
         image: 'https://image.tmdb.org/t/p/w220_and_h330_face/pcT1vivabBnBk0tZgVBO1I8aK75.jpg',
         genre_ids: [18, 25],
 
-    }]} />);
+    }]}
+    setPage={() => {}}
+    isLoading={false}
+    />);
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

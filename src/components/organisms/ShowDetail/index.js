@@ -15,6 +15,8 @@ import {
     FavoriteButton,
     BackWrapper,
     BackButton,
+    ContentWrapper,
+    Wrap,
 } from './style'
 import Icon from '../../atoms/Icon'
 import { saveFavoriteShow, isFavoriteShow } from '../../../utils/favoritesShowsLS'
@@ -69,25 +71,29 @@ const ShowDetail = () => {
                 </BackButton>
             </BackWrapper>
             <Text type="header-2">{show.name}</Text>
-            
-            <Image src={show.image} type="detail" />
-            <Score value={show.score} />
-            
-            <DetailWrapper>
-                <TopWrapper>
-                    <Text type="header-2" color="primary">Overview</Text>
-                    <FavoriteButton onClick={handleMarkFavorite(show.id)} isFavorite={isFavorite}>
-                        <Icon color={isFavorite ? 'red' : 'lightGray'} name="Favorite" />
-                    </FavoriteButton>
-                </TopWrapper>
-                <Text type="paragraph">{show.overview}</Text>
+            <Wrap>
+                <ContentWrapper>
+                    
+                    <Image src={show.image} type="detail" />
+                    <Score value={show.score} />
+                
+                </ContentWrapper>
+                <DetailWrapper>
+                    <TopWrapper>
+                        <Text type="header-2" color="primary">Overview</Text>
+                        <FavoriteButton onClick={handleMarkFavorite(show.id)} isFavorite={isFavorite}>
+                            <Icon color={isFavorite ? 'red' : 'lightGray'} name="Favorite" />
+                        </FavoriteButton>
+                    </TopWrapper>
+                    <Text type="paragraph">{show.overview}</Text>
 
-                <ChipsWrapper>
-                    <Chip icon="Movie" label={genres.join('/')} />
-                    <Chip icon="Schedule" label={`${duration?.[0] || 0} min`} />
-                    <Chip label={`${seasons} seasons`} />
-                </ChipsWrapper>
-            </DetailWrapper>
+                    <ChipsWrapper>
+                        <Chip icon="Movie" label={genres.join('/')} />
+                        <Chip icon="Schedule" label={`${duration?.[0] || 0} min`} />
+                        <Chip label={`${seasons} seasons`} />
+                    </ChipsWrapper>
+                </DetailWrapper>
+            </Wrap>
         </ShowDetailWrapper>
     )
 }

@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components/macro'
+import device from '../../../utils/sizesDevices'
 
 export const ShowDetailWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0px 20px 0px 20px;
+    width: fit-content;
 
     > span, img {
         margin-bottom: 10px;
@@ -16,6 +18,7 @@ export const DetailWrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+    max-width: 500px;
 
     > span {
         margin-bottom: 10px;
@@ -66,4 +69,20 @@ export const BackButton = styled.button`
     ${sharedCss}
     width: 30px;
     height: 30px;
+`
+
+export const ContentWrapper = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
+export const Wrap = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    @media ${device.tablet} {
+        flex-direction: row;
+    }
 `
