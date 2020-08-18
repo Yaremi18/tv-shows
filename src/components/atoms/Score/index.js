@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import PropTypes from 'prop-types'
 import Icon from '../Icon'
 
 const Score = ({ value }) => {
@@ -19,6 +20,10 @@ const Score = ({ value }) => {
             })}
         </div>
     )
+}
+
+Score.propTypes = {
+    value: PropTypes.number.isRequired,
 }
 
 export default Score

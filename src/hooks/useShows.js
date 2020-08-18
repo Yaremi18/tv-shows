@@ -37,14 +37,6 @@ const useShows = (category, page, reset) => {
             if (result?.status === 200) {
                 setShows(prev => {
                     const newData = result?.data?.results || []
-
-                    // if (reset){
-                    //     return {
-                    //         ...prev,
-                    //         [category]: newData,
-                    //     }
-                    // }
-
                     return {
                         ...prev,
                         [category]: [

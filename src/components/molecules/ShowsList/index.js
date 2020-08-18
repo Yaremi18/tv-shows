@@ -1,8 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Card from '../Card'
-import { CardsWrapper, ButtonMore } from './style'
 import Icon from '../../atoms/Icon'
 
+import { CardsWrapper, ButtonMore } from './style'
+
+// Component to display all the shows loaded in a list
 const ShowsList = ({ shows, setPage, isLoading }) => (
     <CardsWrapper>
         {shows.map((show) => (
@@ -28,5 +31,11 @@ const ShowsList = ({ shows, setPage, isLoading }) => (
         </ButtonMore>
     </CardsWrapper>
 )
+
+ShowsList.propTypes = {
+    shows: PropTypes.arrayOf(PropTypes.shape({}).isRequired).isRequired,
+    setPage: PropTypes.func.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+}
 
 export default ShowsList

@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import Text from '../../atoms/Text'
 import Icon from '../../atoms/Icon'
 import Divider from '../../atoms/Divider'
-// import useScreenSize from '../../../hooks/useScreenSize';
-// import { sizes } from '../../../utils/sizesDevices';
 import {
     SideMenuWrapper,
     HeaderWrapper,
@@ -27,11 +25,14 @@ const menuOptions = [{
     name: 'Airing now',
     icon: 'LiveTv',
     path: '/airingNow',
-}];
+}]
 
+// This component renders the sidemenu.
 const SideMenu = ({ isOpen, onSideMenuToggle }) => {
     const [selectedOption, setSelectedOption] = useState('/')
 
+    // This callback set the selected option and hide the sidemenu when an
+    // option is selected.
     const handleSelectOption = useCallback((option) => () => {
         onSideMenuToggle()
         setSelectedOption(option)
@@ -62,6 +63,7 @@ const SideMenu = ({ isOpen, onSideMenuToggle }) => {
 
 SideMenu.propTypes = {
     isOpen: PropTypes.bool.isRequired,
+    onSideMenuToggle: PropTypes.func.isRequired,
 }
 
 export default SideMenu

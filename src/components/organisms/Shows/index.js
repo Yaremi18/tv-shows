@@ -46,7 +46,7 @@ const orderShows = (orderBy, shows, order) => {
     })
 }
 // const isLoading = false
-const Shows = ({ category, setTitle, isSideMenuFixed }) => {
+const Shows = ({ category, setTitle }) => {
     const [page, setPage] = useState(1)
     const { shows, isLoading } = useShows(category, page)
     
@@ -117,6 +117,7 @@ const Shows = ({ category, setTitle, isSideMenuFixed }) => {
 
 Shows.propTypes = {
     category: PropTypes.oneOf(Object.keys(headers)).isRequired,
+    setTitle: PropTypes.func.isRequired,
 }
 
 export default Shows

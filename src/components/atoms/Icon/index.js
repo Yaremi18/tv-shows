@@ -16,7 +16,7 @@ Icon.propTypes = {
 };
 
 Icon.defaultProps = {
-    color: 'gray',
+    color: 'primary',
 };
 
 export default Icon;

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Text from '../Text'
 import { SelectWrapper, Selector } from './style'
 
@@ -18,6 +19,16 @@ const Select = ({
             </Selector>
         </SelectWrapper>
     )
+}
+
+Select.propTypes = {
+    options: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+    }).isRequired).isRequired,
+    label: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    color: PropTypes.string.isRequired,
 }
 
 export default Select

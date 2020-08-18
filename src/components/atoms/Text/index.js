@@ -14,11 +14,13 @@ Text.propTypes = {
     color: PropTypes.string,
     type: PropTypes.oneOf(['header-1', 'header-2', 'paragraph', 'label']),
     children: PropTypes.node.isRequired,
+    inline: PropTypes.bool,
 }
 
 Text.defaultProps = {
     color: 'secondary',
-    type: 'paragraph'
+    type: 'paragraph',
+    inline: false,
 }
 
 export default Text

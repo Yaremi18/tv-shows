@@ -9,6 +9,7 @@ import {
     ImageWrapper,
 } from './style'
 
+// Component to display the genral show info
 const Card = ({
     show,
 }) => {
