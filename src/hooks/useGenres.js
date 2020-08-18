@@ -14,7 +14,7 @@ const useGenres = () => {
 
     useEffect(() => {
         const updateGenres = async () => {
-            const result = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${config.apiKey}&language=en-US`)
+            const result = await axios.get(`https://api.themoviedb.org/3/genre/tv/list?api_key=${config.apiKey}&language=en-US`)
             if (result.status !== 200) return
             dispatch(loadGenres(result.data?.genres || []))
 

@@ -15,7 +15,6 @@ const ShowsList = ({ shows, setPage, isLoading }) => (
                     score: show.vote_average * 5 / 10,
                     image: `https://image.tmdb.org/t/p/w220_and_h330_face/${show.poster_path}`,
                     genre_ids: show.genre_ids,
-                    duration: 0,
                 }}
             />
         ))}
