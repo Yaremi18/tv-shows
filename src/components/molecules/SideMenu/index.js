@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import Text from '../../atoms/Text'
 import Icon from '../../atoms/Icon'
@@ -30,6 +30,12 @@ const menuOptions = [{
 }];
 
 const SideMenu = ({ isOpen, onSideMenuToggle }) => {
+    const [selectedOption, setSelectedOption] = useState('/')
+
+    const handleSelectOption = useCallback((option) => () => {
+        onSideMenuToggle()
+        setSelectedOption(option)
+    }, [onSideMenuToggle])
     return (
         <SideMenuWrapper isOpen={isOpen}>
             <HeaderWrapper>
@@ -38,7 +44,11 @@ const SideMenu = ({ isOpen, onSideMenuToggle }) => {
             <BodyWrapper>
                 {menuOptions.map((option) => (
                     <ItemWrapper key={option.name}>
-                        <OptionWrapper to={option.path} onClick={onSideMenuToggle}>
+                        <OptionWrapper
+                            to={option.path}
+                            onClick={handleSelectOption(option.path)}
+                            selected={selectedOption === option.path}
+                        >
                             <Icon color="lightPrimary" name={option.icon} />
                             <Text type="paragraph" color="lightPrimary">{option.name}</Text>
                         </OptionWrapper>

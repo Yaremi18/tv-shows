@@ -48,7 +48,7 @@ const orderShows = (orderBy, shows, order) => {
     })
 }
 // const isLoading = false
-const Shows = ({ category, setTitle }) => {
+const Shows = ({ category, setTitle, isSideMenuFixed }) => {
     const [page, setPage] = useState(1)
     const { shows, isLoading } = useShows(category, page)
     
@@ -73,7 +73,6 @@ const Shows = ({ category, setTitle }) => {
     }, [shows])
 
     const handleOrderBy = useCallback((e) => {
-        console.log("DD")
         let _showsOrdered = []
         const _shows = [...shows]
         switch (e.target.value) {
@@ -97,26 +96,24 @@ const Shows = ({ category, setTitle }) => {
     }, [shows])
 
     return (
-        <Page>
-            <ContentWrapper>
-                <SearchWrapper>
-                    <Select
-                        name="orderBy"
-                        label="Order by"
-                        color="secondary"
-                        options={searchOptions}
-                        onChange={handleOrderBy}
-                    />
-                </SearchWrapper>
-                <Suspense fallback={<Loading>Loading shows...</Loading>}>
-                    <ShowsList
-                        shows={showsOrdered}
-                        setPage={setPage}
-                        isLoading={isLoading}
-                    />
-                </Suspense>
-            </ContentWrapper>
-        </Page>
+        <ContentWrapper>
+            <SearchWrapper>
+                <Select
+                    name="orderBy"
+                    label="Order by"
+                    color="secondary"
+                    options={searchOptions}
+                    onChange={handleOrderBy}
+                />
+            </SearchWrapper>
+            <Suspense fallback={<Loading>Loading shows...</Loading>}>
+                <ShowsList
+                    shows={showsOrdered}
+                    setPage={setPage}
+                    isLoading={isLoading}
+                />
+            </Suspense>
+        </ContentWrapper>
     )
 }
 

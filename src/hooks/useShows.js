@@ -2,17 +2,22 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import config from '../config.json'
 
+const initialState = {
+    popular: [],
+    topRated: [],
+    airingNow: [],
+}
+
 const useShows = (category, page, reset) => {
     const [isLoading, setIsLoading] = useState(true)
-    const [shows, setShows] = useState({
-        popular: [],
-        topRated: [],
-        airingNow: [],
-    })
+    const [shows, setShows] = useState(initialState)
 
     useEffect(() => {
         const loadShows = async () => {
             setIsLoading(true)
+            if (page === 1) {
+                setShows(initialState)
+            }
             let result
             const baseUrl = 'https://api.themoviedb.org/3/tv/'
             switch (category) {

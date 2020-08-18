@@ -32,18 +32,17 @@ export const Span = styled.span`
                 white-space: nowrap;
                 overflow: hidden !important;
                 text-overflow: ellipsis;
-                text-align: center;`
+                text-align: center;
+                width: 100px;`
         }
     }}
     
     @media ${device.mobileS} {
         font-size: ${({ type }) => sizes[type].mobile};
-        ${({ inline }) => inline && 'width: 150px;'}
     }
 
     @media ${device.laptop} { 
         font-size: ${({ type }) => sizes[type].web};
-        ${({ inline }) => inline && 'width: 100px;'}
     }
     
     @media ${device.desktop} {

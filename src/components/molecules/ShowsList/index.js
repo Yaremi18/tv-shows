@@ -19,7 +19,6 @@ const ShowsList = ({ shows, setPage, isLoading }) => (
                 }}
             />
         ))}
-        
         <ButtonMore
             onClick={() => setPage(prev => prev + 1)}
             disabled={isLoading}

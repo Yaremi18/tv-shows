@@ -3,13 +3,10 @@ import { Link } from 'react-router-dom'
 import device from '../../../utils/sizesDevices'
 import theme from '../../../provider/themeProvider'
 
-
-const width = {
-    colapsed: {
-        size1: '60%',
-        size2: '40%',
-        size3: '250px'
-    },
+export const sideMenuWidth = {
+    size1: '60%',
+    size2: '40%',
+    size3: '250px'
 }
 
 export const SideMenuWrapper = styled.div`
@@ -23,16 +20,17 @@ export const SideMenuWrapper = styled.div`
     background: ${theme.colors.secondary};
 
     @media ${device.mobileS} {
-        width: ${width.colapsed.size1};
+        width: ${sideMenuWidth.size1};
     }
 
     @media ${device.mobileL} {
-        width: ${width.colapsed.size2};
+        width: ${sideMenuWidth.size2};
     }
 
     @media ${device.tablet} {
-        width: ${width.colapsed.size3};
+        width: ${sideMenuWidth.size3};
     }
+
     z-index: 999;
     transition: transform 0.4s ease-out;
     ${({ isOpen }) => isOpen 
@@ -68,18 +66,18 @@ export const ItemWrapper = styled.div`
 export const OptionWrapper = styled(Link)`
     cursor: pointer;
     text-decoration: none;
-
     display: flex;
     align-items: center;
-
     padding-left: 5px;
-
+    border-radius: 10px 10px 10px 10px;
+    background: ${({ selected }) => selected ? theme.colors.primary : 'transparent' };
     >span {
         padding-left: 30px;
     }
 
+    
+
     &:hover {
         background: ${theme.colors.primary};
-        border-radius: 10px 10px 10px 10px;
     }
 `

@@ -1,5 +1,7 @@
-import styled from 'styled-components/macro';
-import theme from '../../../provider/themeProvider';
+import styled from 'styled-components/macro'
+import theme from '../../../provider/themeProvider'
+import device from '../../../utils/sizesDevices'
+import { sideMenuWidth } from '../../molecules/SideMenu/style'
 
 export const SideMenuToggle = styled.button`
     margin: 0px;
@@ -9,7 +11,7 @@ export const SideMenuToggle = styled.button`
     height: 30px;
     background: transparent;
     border: none;
-`;
+`
 
 export const HeaderWrapper = styled.div`
     z-index: 200;
@@ -28,7 +30,7 @@ export const HeaderWrapper = styled.div`
     > span {
         padding-left: 20px;
     }
-`;
+`
 
 export const Backdrop = styled.div`
     position: fixed;
@@ -38,4 +40,4 @@ export const Backdrop = styled.div`
     z-index: 100;
     top: 0;
     right: 0;
-`;
+`

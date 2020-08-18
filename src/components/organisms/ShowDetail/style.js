@@ -4,6 +4,7 @@ export const ShowDetailWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 0px 20px 0px 20px;
 
     > span, img {
         margin-bottom: 10px;
@@ -14,7 +15,7 @@ export const ShowDetailWrapper = styled.div`
 export const DetailWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 100%;
 
     > span {
         margin-bottom: 10px;
@@ -51,13 +52,14 @@ export const FavoriteButton = styled.button`
 
     transition-duration: 0.8s;
     transition-property: transform;
+    outline: none;
 
     ${({ isFavorite }) => isFavorite ? 'transform:rotate(360deg);' : '' }
 `
 
 export const BackWrapper = styled.div`
     display: flex;
-    width: 90%;
+    width: 100%;
 `
 
 export const BackButton = styled.button`
