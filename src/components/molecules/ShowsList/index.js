@@ -8,9 +8,9 @@ import { CardsWrapper, ButtonMore } from './style'
 // Component to display all the shows loaded in a list
 const ShowsList = ({ shows, setPage, isLoading }) => (
     <CardsWrapper>
-        {shows.map((show) => (
+        {shows.map((show, i) => (
             <Card
-                key={show.id}
+                key={`${show.id}${i}`}
                 show={{
                     id: show.id,
                     name: show.name,
