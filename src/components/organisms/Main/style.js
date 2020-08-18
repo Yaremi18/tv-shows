@@ -3,8 +3,7 @@ import theme from '../../../provider/themeProvider';
 
 export const SideMenuToggle = styled.button`
     margin: 0px;
-    padding: 0px;
-    padding-left: 10px;
+    padding: 5px 0px 0px 10px;
     outline: none;
     width: 30px;
     height: 30px;

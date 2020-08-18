@@ -3,11 +3,11 @@ import { ChipWrapper } from './style';
 import Icon from '../../atoms/Icon';
 import Text from '../../atoms/Text';
 
-const Chip = ({ color, label, icon }) => {
+const Chip = ({label, icon }) => {
     return (
-        <ChipWrapper color={color}>
-            <Icon name={icon} color="primary" />
-            <Text type="paragraph">{label}</Text>
+        <ChipWrapper>
+            {icon && <Icon name={icon} color="primary" />}
+            <Text type="paragraph" color="lightPrimary">{label}</Text>
         </ChipWrapper>
     )
 };

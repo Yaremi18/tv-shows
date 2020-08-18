@@ -4,6 +4,7 @@ import React, {
     Suspense,
     lazy,
     useCallback,
+    useMemo,
 } from 'react'
 import PropTypes from 'prop-types'
 import Select from '../../atoms/Select'
@@ -46,12 +47,12 @@ const orderShows = (orderBy, shows, order) => {
         return 0
     })
 }
-
+// const isLoading = false
 const Shows = ({ category, setTitle }) => {
     const [page, setPage] = useState(1)
     const { shows, isLoading } = useShows(category, page)
-    // const isLoading = false
-    // const shows = [{
+    
+    // const shows = useMemo(() => [{
     //     id: 1,
     //     name: "Yaremi",
     //     overview: "This is an example",
@@ -59,7 +60,7 @@ const Shows = ({ category, setTitle }) => {
     //     poster_path: '/zu5HCP84rcBJJhoIQAafMXMeU2p.jpg',
     //     genre_ids: [12, 28],
     //     duration: 120,
-    // }]
+    // }], [])
 
     const [showsOrdered, setShowsOrdered] = useState([])
 
@@ -67,9 +68,12 @@ const Shows = ({ category, setTitle }) => {
         setTitle(headers[category])
     }, [setTitle, category])
 
-    useEffect(() => setShowsOrdered(shows), [shows])
+    useEffect(() => {
+        setShowsOrdered(shows)
+    }, [shows])
 
     const handleOrderBy = useCallback((e) => {
+        console.log("DD")
         let _showsOrdered = []
         const _shows = [...shows]
         switch (e.target.value) {
@@ -98,8 +102,9 @@ const Shows = ({ category, setTitle }) => {
                 <SearchWrapper>
                     <Select
                         name="orderBy"
-                        options={searchOptions}
                         label="Order by"
+                        color="secondary"
+                        options={searchOptions}
                         onChange={handleOrderBy}
                     />
                 </SearchWrapper>

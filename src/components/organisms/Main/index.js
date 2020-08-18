@@ -22,10 +22,10 @@ function App() {
     <Router>
       <HeaderWrapper>
         <SideMenuToggle onClick={onSideMenuToggle}>
-          <Icon color="primary" name="Menu" />
+          <Icon color="lightPrimary" name="Menu" />
         </SideMenuToggle>
 
-        <Text type="header-1">{title}</Text>
+        <Text type="header-1" color="primary">{title}</Text>
       </HeaderWrapper>
       <SideMenu isOpen={isOpen} onSideMenuToggle={onSideMenuToggle} />
       {isOpen && <Backdrop onClick={onSideMenuToggle} />}

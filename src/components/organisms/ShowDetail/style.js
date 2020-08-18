@@ -1,9 +1,14 @@
-import styled from 'styled-components/macro'
+import styled, { css } from 'styled-components/macro'
 
 export const ShowDetailWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    > span, img {
+        margin-bottom: 10px;
+        margin-top: 5px;
+    }
 `
 
 export const DetailWrapper = styled.div`
@@ -19,6 +24,7 @@ export const DetailWrapper = styled.div`
 export const ChipsWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
+    margin-top: 10px;
 
     >div {
         margin-right: 5px;
@@ -31,15 +37,31 @@ export const TopWrapper = styled.div`
     justify-content: space-between;
 `
 
-export const FavoriteButton = styled.button`
+const sharedCss = css`
     padding: 0px;
-    margin: 0px 0px 5px 0px;
     outline: none;
     background: transparent;
     border: 0;
+    cursor: pointer;
+`
+
+export const FavoriteButton = styled.button`
+    ${sharedCss}
+    margin: 0px 0px 5px 0px;
 
     transition-duration: 0.8s;
     transition-property: transform;
 
     ${({ isFavorite }) => isFavorite ? 'transform:rotate(360deg);' : '' }
+`
+
+export const BackWrapper = styled.div`
+    display: flex;
+    width: 90%;
+`
+
+export const BackButton = styled.button`
+    ${sharedCss}
+    width: 30px;
+    height: 30px;
 `

@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components/macro';
-import { Link } from 'react-router-dom';
-import device from '../../../utils/sizesDevices';
-import theme from '../../../provider/themeProvider';
+import styled, { css } from 'styled-components/macro'
+import { Link } from 'react-router-dom'
+import device from '../../../utils/sizesDevices'
+import theme from '../../../provider/themeProvider'
 
 
 const width = {
@@ -38,7 +38,7 @@ export const SideMenuWrapper = styled.div`
     ${({ isOpen }) => isOpen 
     ? ` transform: translateX(0);`
     : ` transform: translateX(-100%);`}
-`;
+`
 
 export const shareCss = css`
     display: flex;
@@ -48,15 +48,14 @@ export const shareCss = css`
 
 export const HeaderWrapper = styled.div`
     display: flex;
-    align-items: flex-end;
-    height: 20%;
+    align-items: center;
+    height: 15%;
     padding-left: 20px;
 `
 export const BodyWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 30px;
     height: 80%;
 `
 export const ItemWrapper = styled.div`
@@ -73,15 +72,14 @@ export const OptionWrapper = styled(Link)`
     display: flex;
     align-items: center;
 
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 5px;
 
     >span {
-        padding-left: 10px;
+        padding-left: 30px;
     }
 
     &:hover {
-        background: ${theme.colors.aqua};
+        background: ${theme.colors.primary};
         border-radius: 10px 10px 10px 10px;
     }
 `

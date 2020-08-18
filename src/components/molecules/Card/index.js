@@ -1,13 +1,13 @@
-import React, { useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
-import Text from '../../atoms/Text';
-import Score from '../../atoms/Score';
-import Image from '../../atoms/Image';
+import React, { useCallback } from 'react'
+import { useHistory } from 'react-router-dom'
+import Text from '../../atoms/Text'
+import Score from '../../atoms/Score'
+import Image from '../../atoms/Image'
 import {
     CardWrapper,
     FooterWrapper,
     ImageWrapper,
-} from './style';
+} from './style'
 
 const Card = ({
     show,
@@ -24,10 +24,10 @@ const Card = ({
     return (
         <CardWrapper onClick={goShowDetail(show.id)}>
             <ImageWrapper>
-                <Image src={show.image} />
+                <Image src={show.image} type="card" />
             </ImageWrapper>
             <FooterWrapper>
-                <Text>{show.name}</Text>
+                <Text type="header-2" inline>{show.name}</Text>
             <Score value={show.score} />
             </FooterWrapper>
         </CardWrapper>

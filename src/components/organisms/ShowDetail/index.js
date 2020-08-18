@@ -1,5 +1,5 @@
 import React, { useMemo, useCallback, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useHistory } from 'react-router-dom'
 import Text from '../../atoms/Text'
 import Image from '../../atoms/Image'
 import Score from '../../atoms/Score'
@@ -14,12 +14,15 @@ import {
     ChipsWrapper,
     TopWrapper,
     FavoriteButton,
+    BackWrapper,
+    BackButton,
 } from './style'
 import Icon from '../../atoms/Icon'
 import { saveFavoriteShow, isFavoriteShow } from '../../../utils/favoritesShowsLS'
 
 const ShowDetail = () => {
     const { state: show } = useLocation() // Get show data
+    const history = useHistory()
     const [isFavorite, setIsFavorite] = useState(isFavoriteShow(show.id))
 
     // This hook get all available genres from redux store
@@ -62,25 +65,29 @@ const ShowDetail = () => {
     return (
         <Page>
             <ShowDetailWrapper>
+                <BackWrapper onClick={() => history.goBack()}>
+                    <BackButton>
+                        <Icon name="ArrowBack" color="primary" />
+                    </BackButton>
+                </BackWrapper>
                 <Text type="header-2">{show.name}</Text>
                 
-                <Image src={show.image} />
+                <Image src={show.image} type="detail" />
                 <Score value={show.score} />
                 
                 <DetailWrapper>
                     <TopWrapper>
-                        <Text type="header-2">Overview</Text>
+                        <Text type="header-2" color="primary">Overview</Text>
                         <FavoriteButton onClick={handleMarkFavorite(show.id)} isFavorite={isFavorite}>
                             <Icon color={isFavorite ? 'red' : 'lightGray'} name="Favorite" />
                         </FavoriteButton>
                     </TopWrapper>
                     <Text type="paragraph">{show.overview}</Text>
 
-                    <Text type="header-2">{`${seasons} seasons`}</Text>
-
                     <ChipsWrapper>
-                        <Chip icon="Movie" color="secondary" label={genres.join('/')} />
-                        <Chip icon="Schedule" color="secondary" label={`${duration?.[0] || 0} min`} />
+                        <Chip icon="Movie" label={genres.join('/')} />
+                        <Chip icon="Schedule" label={`${duration?.[0] || 0} min`} />
+                        <Chip label={`${seasons} seasons`} />
                     </ChipsWrapper>
                 </DetailWrapper>
             </ShowDetailWrapper>

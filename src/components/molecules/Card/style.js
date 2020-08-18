@@ -11,7 +11,8 @@ export const CardWrapper = styled.button`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid ${themeProvider.colors.gray};
+    border: 1px solid ${themeProvider.colors.primary};
+    background: ${themeProvider.colors.white};
     border-radius: 10px;
 
     height: 300px;

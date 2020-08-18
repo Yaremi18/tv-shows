@@ -6,11 +6,12 @@ const Select = ({
     options,
     label,
     onChange,
+    color,
 }) => {
     return (
         <SelectWrapper>
-            <Text type="paragraph">{label}</Text>
-            <Selector onChange={onChange}>
+            <Text type="paragraph" color={color}>{label}</Text>
+            <Selector onChange={onChange} type="paragraph">
                 {options.map((option) => (
                     <option key={option.id} value={option.id}>{option.name}</option>
                 ))}

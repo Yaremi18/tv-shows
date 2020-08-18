@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 import theme from '../../../provider/themeProvider';
 
 export const ChipWrapper = styled.div`
-    background: ${({ color }) => theme.colors[color]};
+    background: ${theme.colors.secondary};
     border-radius: 20px;
     width: fit-content;
     height: 20px;

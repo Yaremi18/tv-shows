@@ -35,15 +35,14 @@ const SideMenu = ({ isOpen, onSideMenuToggle }) => {
             <HeaderWrapper>
                 <Text type="header-1" color="primary">TV Shows</Text>
             </HeaderWrapper>
-            <Divider />
             <BodyWrapper>
                 {menuOptions.map((option) => (
                     <ItemWrapper key={option.name}>
                         <OptionWrapper to={option.path} onClick={onSideMenuToggle}>
-                            <Icon color="primary" name={option.icon} />
-                            <Text type="paragraph" color="primary">{option.name}</Text>
+                            <Icon color="lightPrimary" name={option.icon} />
+                            <Text type="paragraph" color="lightPrimary">{option.name}</Text>
                         </OptionWrapper>
-                        <Divider />
+                        <Divider color="primary" />
                     </ItemWrapper>
                 ))}
             </BodyWrapper>
