@@ -4,11 +4,9 @@ import React, {
     Suspense,
     lazy,
     useCallback,
-    useMemo,
 } from 'react'
 import PropTypes from 'prop-types'
 import Select from '../../atoms/Select'
-import Page from '../../atoms/Page'
 import Loading from '../../molecules/Loading'
 import useShows from '../../../hooks/useShows'
 import {

@@ -1,7 +1,5 @@
 import styled from 'styled-components/macro'
 import theme from '../../../provider/themeProvider'
-import device from '../../../utils/sizesDevices'
-import { sideMenuWidth } from '../../molecules/SideMenu/style'
 
 export const SideMenuToggle = styled.button`
     margin: 0px;

@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro'
-import device from '../../../utils/sizesDevices'
 
 export const sizes = {
     detail: {
