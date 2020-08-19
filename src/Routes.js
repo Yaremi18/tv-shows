@@ -5,6 +5,7 @@ import Page from './components/atoms/Page'
 
 const Shows = lazy(() => import('./components/organisms/Shows'))
 const ShowDetail = lazy(() => import('./components/organisms/ShowDetail'))
+const SendFavorites = lazy(() => import('./components/organisms/SendFavorites'))
 
 const Routes = ({ setTitle, isSideMenuFixed }) => (
     <Suspense
@@ -18,6 +19,9 @@ const Routes = ({ setTitle, isSideMenuFixed }) => (
                 </Route>
                 <Route path="/airingNow">
                     <Shows category="airingNow" setTitle={setTitle} />
+                </Route>
+                <Route path="/sendFavorites">
+                    <SendFavorites category="sendFavorites" setTitle={setTitle} />
                 </Route>
 
                 {/* Path to see the show detail */}

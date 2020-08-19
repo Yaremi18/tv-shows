@@ -21,14 +21,17 @@ const ShowsList = ({ shows, setPage, isLoading }) => (
                 }}
             />
         ))}
-        <ButtonMore
-            onClick={() => setPage(prev => prev + 1)}
-            disabled={isLoading}
-        >
-            {isLoading ? <Icon name="Loop" color="primary" /> : (
-                <Icon name="Add" color="primary" />
-            )}
-        </ButtonMore>
+        {shows.length ? (
+            <ButtonMore
+                onClick={() => setPage(prev => prev + 1)}
+                disabled={isLoading}
+            >
+                {isLoading ? <Icon name="Loop" color="primary" /> : (
+                    <Icon name="Add" color="primary" />
+                )}
+            </ButtonMore>
+        ) : 'No shows'}
+
     </CardsWrapper>
 )
 

@@ -29,8 +29,8 @@ const ShowDetail = () => {
     // This hook get all available genres from redux store
     const allGenres = useGenres()
 
-    // This hook get a extra show detail, in this case
-    // only is necessary run_time
+    // This hook get an extra show detail, in this case
+    // only is necessary episode_run_time & number_of_seasons
     const {
         showDetail: {
             episode_run_time: duration,
@@ -54,10 +54,10 @@ const ShowDetail = () => {
         }, [])
     ), [allGenres, show.genre_ids])
 
-    const handleMarkFavorite = useCallback((showId) => () => {
-        saveFavoriteShow(showId)
+    const handleMarkFavorite = useCallback(() => {
+        saveFavoriteShow(show.id)
         setIsFavorite(prev => !prev)
-    }, [])
+    }, [show.id])
 
     if (isLoading) {
         return <Loading>Loading show detail...</Loading>
@@ -73,15 +73,13 @@ const ShowDetail = () => {
             <Text type="header-2">{show.name}</Text>
             <Wrap>
                 <ContentWrapper>
-                    
                     <Image src={show.image} type="detail" />
                     <Score value={show.score} />
-                
                 </ContentWrapper>
                 <DetailWrapper>
                     <TopWrapper>
                         <Text type="header-2" color="primary">Overview</Text>
-                        <FavoriteButton onClick={handleMarkFavorite(show.id)} isFavorite={isFavorite}>
+                        <FavoriteButton onClick={handleMarkFavorite} isFavorite={isFavorite}>
                             <Icon color={isFavorite ? 'red' : 'lightGray'} name="Favorite" />
                         </FavoriteButton>
                     </TopWrapper>

@@ -26,6 +26,11 @@ const menuOptions = [{
     name: 'Airing now',
     icon: 'LiveTv',
     path: '/airingNow',
+},
+{
+    name: 'Send favorites',
+    icon: 'Favorite',
+    path: '/sendFavorites',
 }]
 
 // This component renders the sidemenu.
