@@ -6,13 +6,10 @@ const useFavorites = () => {
     return useCallback(async (username, password, showId) => {
         try {
             let sessionId = localStorage.getItem('sessionId-themoviedb')
-
-            console.log(sessionId)
             const baseUrl = 'https://api.themoviedb.org/3'
             if (!sessionId) {
                 const { data: dataToken } = await axios.get(`${baseUrl}/authentication/token/new?api_key=${config.apiKey}`)
 
-                console.log(dataToken)
                 if (!dataToken.success) {
                     throw new Error(dataToken.status_message)
                 }

@@ -25,7 +25,6 @@ const SendFavorites = ({ setTitle }) => {
     const favoritesShows = useMemo(() => getFavorites(), [])
 
     const sendAllFavoritesShows = useCallback(async () => {
-        console.log("EE")
         if (!sessionId && (!loginData.username || !loginData.password)) {
             window.alert("All fields are required!")
             return
@@ -59,8 +58,17 @@ const SendFavorites = ({ setTitle }) => {
         }))
     }, [])
 
+    if (!Object.keys(favoritesShows).length) {
+        return (
+            <SendFavoritesWrapper>
+                <Text>You don't have favorites shows</Text>
+            </SendFavoritesWrapper>
+        )
+    }
+    
     return (
         <SendFavoritesWrapper>
+            
             {!sessionId ? (
                 <>
                     <Text type="header-2" color="primary">Log in</Text>
